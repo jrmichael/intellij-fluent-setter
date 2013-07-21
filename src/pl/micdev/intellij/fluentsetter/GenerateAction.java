@@ -44,8 +44,8 @@ public class GenerateAction extends AnAction {
 
     private String generateSetterText(PsiField field, PsiClass psiClass) {
         StringBuilder setterBuilder = new StringBuilder();
-        setterBuilder.append("public ").append(psiClass.getName()).append(" ").append(field.getName()).append('(').append(field
-                .getType().getPresentableText()).append(' ').append(field.getName()).append(") {\n");
+        setterBuilder.append("public ").append(psiClass.getName()).append(" ").append(field.getName())
+                .append('(').append(field.getType().getPresentableText()).append(' ').append(field.getName()).append(") {\n");
         setterBuilder.append("this.").append(field.getName()).append(" = ").append(field.getName()).append(";\n");
         setterBuilder.append("return this;\n");
         setterBuilder.append("}\n");
@@ -66,8 +66,7 @@ public class GenerateAction extends AnAction {
         }
         int offset = editor.getCaretModel().getOffset();
         PsiElement psiElement = psiFile.findElementAt(offset);
-        PsiClass psiClass = PsiTreeUtil.getParentOfType(psiElement, PsiClass.class);
-        return psiClass;
+        return PsiTreeUtil.getParentOfType(psiElement, PsiClass.class);
     }
 
 }

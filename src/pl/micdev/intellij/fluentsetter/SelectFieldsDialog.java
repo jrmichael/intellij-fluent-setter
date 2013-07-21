@@ -3,7 +3,6 @@ package pl.micdev.intellij.fluentsetter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import javax.swing.*;
 
@@ -22,26 +21,25 @@ public class SelectFieldsDialog extends DialogWrapper {
 
     private CollectionListModel<PsiField> fields;
 
-    private LabeledComponent<JPanel> component;
+    private LabeledComponent<JPanel> panel;
 
     public SelectFieldsDialog(PsiClass psiClass) {
         super(psiClass.getProject());
-        setTitle("Select fields");
+        setTitle("Select Fields");
 
-        prepareComponent(psiClass);
+        preparePanel(psiClass);
 
         init();
     }
 
-    private void prepareComponent(PsiClass psiClass) {
+    private void preparePanel(PsiClass psiClass) {
         fields = new CollectionListModel<PsiField>(findFieldsWithoutFluentSetters(psiClass));
-
         JList fieldList = new JList(fields);
         fieldList.setCellRenderer(new DefaultPsiElementCellRenderer());
         ToolbarDecorator decorator = ToolbarDecorator.createDecorator(fieldList);
         decorator.disableAddAction();
         JPanel panel = decorator.createPanel();
-        component = LabeledComponent.create(panel, "fields to generate setters for:");
+        this.panel = LabeledComponent.create(panel, "fields to generate setters for:");
     }
 
     private List<PsiField> findFieldsWithoutFluentSetters(PsiClass psiClass) {
@@ -51,17 +49,16 @@ public class SelectFieldsDialog extends DialogWrapper {
         }
         List<PsiField> fieldsWithoutSetters = new ArrayList<PsiField>();
         for (PsiField psiField : psiClass.getFields()) {
-            if(!methods.contains(psiField.getName()))
+            if (!methods.contains(psiField.getName()))
                 fieldsWithoutSetters.add(psiField);
         }
-
         return fieldsWithoutSetters;
     }
 
     @Nullable
     @Override
     protected JComponent createCenterPanel() {
-        return component;
+        return panel;
     }
 
     public List<PsiField> getSelectedFields() {
