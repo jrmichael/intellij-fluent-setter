@@ -1,37 +1,41 @@
 <idea-plugin version="2">
-  <id>pl.micdev.intellij.fluentsetter</id>
-  <name>Fluent setter generator plugin for IntelliJ</name>
-  <version>1.0</version>
-  <vendor email="michael.bareja@gmail.com">Michael Bareja</vendor>
+    <id>pl.micdev.intellij.fluentsetter</id>
+    <name>Fluent setter generator plugin for IntelliJ</name>
+    <version>1.0</version>
+    <vendor email="michael.bareja@gmail.com">Michael Bareja</vendor>
 
-  <description><![CDATA[
+    <description><![CDATA[
       This is a simple fluent setter generator plugin.
       ]]></description>
 
-  <change-notes><![CDATA[
-      ]]>
-  </change-notes>
+    <change-notes><![CDATA[
+            ]]>
+    </change-notes>
 
-  <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
-  <idea-version since-build="123.72"/>
+    <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="123.72"/>
 
-  <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
-       on how to target different products -->
-  <depends>com.intellij.modules.java</depends>
+    <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+         on how to target different products -->
+    <depends>com.intellij.modules.java</depends>
 
-  <application-components>
-    <!-- Add your application components here -->
-  </application-components>
+    <application-components>
+        <!-- Add your application components here -->
+    </application-components>
 
-  <project-components>
-    <!-- Add your project components here -->
-  </project-components>
+    <project-components>
+        <!-- Add your project components here -->
+    </project-components>
 
-  <actions>
-    <!-- Add your actions here -->
-  </actions>
+    <actions>
+        <!-- Add your actions here -->
+        <action id="FluentSetter.pl.micdev.intellij.fluentsetter.GenerateAction" class="pl.micdev.intellij.fluentsetter.GenerateAction"
+                text="fluent setter(s)" description="generates fluent setters">
+            <add-to-group group-id="GenerateGroup" anchor="after" relative-to-action="JavaGenerateGroup1"/>
+        </action>
+    </actions>
 
-  <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
 </idea-plugin>
