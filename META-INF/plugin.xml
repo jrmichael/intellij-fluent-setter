@@ -27,7 +27,7 @@
     <actions>
         <!-- Add your actions here -->
         <action id="FluentSetter.pl.micdev.intellij.fluentsetter.GenerateAction" class="pl.micdev.intellij.fluentsetter.GenerateAction"
-                text="fluent setter" description="generates fluent setters">
+                text="Fluent Setter" description="Generates fluent setters">
             <add-to-group group-id="GenerateGroup" anchor="after" relative-to-action="JavaGenerateGroup1"/>
         </action>
     </actions>
